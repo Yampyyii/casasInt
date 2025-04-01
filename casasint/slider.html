@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>slider</h2>
+    <div class="slider-frame">
+
+        <ul>
+            <li><img src="/img/casas.jpeg" alt=""></li>
+            <li><img src="/img/hero.jpg" alt=""></li>
+            <li><img src="/img/huella.jpeg" alt=""></li>
+            <li><img src="/img/inte.jpeg" alt=""></li>
+            <li><img src="/img/robot.jpeg" alt=""></li>
+            <li><img src="/img/tec.jpeg" alt=""></li>
+            <li><img src="/img/tec2.jpeg" alt=""></li>
+            <li><img src="/img/tec3.jpeg" alt=""></li>
+            <li><img src="slider.jpg" alt=""></li>
+            <li><img src="slider.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<style>
+    .slider-frame{
+        width: 1200px;
+        height: auto;
+        margin: 50px auto 0;
+        overflow: hidden;
+        animation: slide 16s infinite alternate ease-in-out;
+    }
+
+    .slider-frame ul{
+        display: flex;
+        padding: 0;
+        width: 400px;
+
+    }
+    .slider-frame li{
+        list-style:none;
+        width: 100%;
+    }
+
+    .slider-frame img{
+        width: 100%;
+    }
+
+    @keyframes slide {
+        0%{margin-left: 0%;}
+        20%{margin-left: 0%;}
+
+        25%{margin-left: -100%;}
+        45%{margin-left: -100%;}
+
+        50%{margin-left: -200%;}
+        70%{margin-left: -200%;}
+
+        75%{margin-left: -300%;}
+        90%{margin-left: -300%;}
+
+      /*  45%{margin-left: -400%;}
+        50%{margin-left: -400%;}
+
+        55%{margin-left: -500%;}
+        60%{margin-left: -500%;}
+
+        65%{margin-left: -600%;}
+        70%{margin-left: -600%;}
+
+        75%{margin-left: -700%;}
+        80%{margin-left: -700%;}
+
+        85%{margin-left: -800%;}
+        90%{margin-left: -800%;}
+
+        95%{margin-left: -900%;}
+        100%{margin-left: -900%;}*/
+        
+    }
+
+</style>
