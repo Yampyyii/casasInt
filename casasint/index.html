@@ -13,6 +13,14 @@
 <body>
     <header class="top">
         <h1 class="titulo">Casas inteligentes <span>Yampyii</span></h1>
+        <div class="contenedor">
+            <a href="index.html">
+            <img class="logo" src="../casasint/img/logoint.png" alt="">
+          </a>
+          <a href="carrito.html" class="carrito-boton">
+            <img  class="carrito" src="../casasint/img/pngwing.com.png" alt="Carrito" class="icono-carrito">
+          </a>
+          
     </header>
 <!--
     <div class="nav-bg">
@@ -64,6 +72,17 @@
     
         
     </main>
+    <div class="chatbot-icon" onclick="toggleChat()">
+        💬
+    </div>
+    
+    <div class="chatbox" id="chatbox">
+        <div class="chat-header">Atención al Cliente</div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message">Hola 👋 ¿En qué podemos ayudarte?</div>
+        </div>
+        <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." onkeypress="sendMessage(event)">
+    </div>
     
     <footer class="footer">
         <div class="social-icons">
@@ -144,5 +163,34 @@
         });
          
     </script>
+    <script>
+        function toggleChat() {
+            const chatbox = document.getElementById('chatbox');
+            chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+        }
+        
+        function sendMessage(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('chat-input');
+                const message = input.value.trim();
+                if (message !== '') {
+                    const chatMessages = document.getElementById('chat-messages');
+                    const userMsg = document.createElement('div');
+                    userMsg.className = 'message';
+                    userMsg.textContent = 'Tú: ' + message;
+                    chatMessages.appendChild(userMsg);
+        
+                    const botReply = document.createElement('div');
+                    botReply.className = 'message';
+                    botReply.textContent = 'Bot: Gracias por tu mensaje. Te responderemos pronto.';
+                    chatMessages.appendChild(botReply);
+        
+                    input.value = '';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }
+        }
+        </script>
+        
 </body>
 </html>
