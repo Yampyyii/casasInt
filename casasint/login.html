@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="preload" href="css/normalize.css" as="style">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="css/styles.css" as="style">
+  <link href="css/styles.css" rel="stylesheet">
+  
+  <meta charset="UTF-8">
+  <title>Página de Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      color: black;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .form-section {
+      display: none;
+    }
+    .form-section.active {
+      display: block;
+    }
+    a{
+      color: blanchedalmond;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Bienvenido</h2>
+  <button onclick="mostrarFormulario('login')">Iniciar Sesión</button>
+  <button onclick="mostrarFormulario('crear')"><a href="registro.html">Crear Usuario</button></a>
+
+  <div id="login" class="form-section">
+    <h3>Iniciar Sesión</h3>
+    <form>
+      <input type="text" placeholder="Usuario" required>
+      <input type="password" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <div id="crear" class="form-section">
+    <h3>Crear Usuario</h3>
+    <form>
+      <input type="text" placeholder="Nuevo Usuario" required>
+      <input type="email" placeholder="Correo Electrónico" required>
+      <input type="password" placeholder="Contraseña" required>
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function mostrarFormulario(formularioId) {
+    document.getElementById('login').classList.remove('active');
+    document.getElementById('crear').classList.remove('active');
+    document.getElementById(formularioId).classList.add('active');
+  }
+</script

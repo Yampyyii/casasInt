@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Estilos preexistentes -->
+  <link rel="preload" href="css/normalize.css" as="style">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="css/styles.css" as="style">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="top">
+    <h1 class="titulo">Casas inteligentes <span>Yampyii</span></h1>
+    <img src="../casasint/img/logoint.png" alt="">
+  </header>
+
+  <div class="nav-bg">
+    <nav class="navegacion-principal contenedor">
+      <ul>
+        <li class="submenu">
+          <a href="#">Menú</a>
+          <ul class="dropdown">
+            <li><a href="index.html">Index</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="login.html">Registrar</a></li>
+            <li><a href="ingresar.html">Ingresar</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="sombra" style="max-width: 40rem; margin: 4rem auto;">
+    <h2>Registro de Usuario</h2>
+    <form id="registroForm" onsubmit="return validarFormulario()">
+      <div class="campo">
+        <input class="input-text" type="text" id="nombre" placeholder="Nombre completo" required>
+      </div>
+      <div class="campo">
+        <input class="input-text" type="email" id="correo" placeholder="Correo electrónico" required>
+      </div>
+      <div class="campo">
+        <input class="input-text" type="tel" id="celular" placeholder="Número de celular" pattern="[0-9]{10}" required>
+      </div>
+      <div class="campo">
+        <input class="input-text" type="number" id="edad" placeholder="Edad" min="18" required>
+      </div>
+      <div class="campo">
+        <input class="input-text" type="password" id="contrasena" placeholder="Contraseña" required>
+      </div>
+      <div class="campo">
+        <input class="input-text" type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required>
+      </div>
+      <div id="mensajeError" class="error" style="color:red; font-size:1.4rem;"></div>
+      <button class="boton" type="submit">Registrarse</button>
+      <a class="boton" href="login.html" style="display: inline-block; text-align: center;">Iniciar sesión</a>
+    </form>
+  </main>
+
+  <script>
+    function validarFormulario() {
+      const edad = parseInt(document.getElementById("edad").value);
+      const contrasena = document.getElementById("contrasena").value;
+      const confirmar = document.getElementById("confirmarContrasena").value;
+      const errorDiv = document.getElementById("mensajeError");
+
+      errorDiv.innerText = "";
+
+      if (edad < 18) {
+        errorDiv.innerText = "Debes tener al menos 18 años para registrarte.";
+        return false;
+      }
+
+      if (contrasena !== confirmar) {
+        errorDiv.innerText = "Las contraseñas no coinciden.";
+        return false;
+      }
+
+      alert("¡Registro exitoso!");
+      return true;
+    }
+  </script>
+</body>
+</html>
