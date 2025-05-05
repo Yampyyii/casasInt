@@ -11,14 +11,50 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <style>
-    
+    /* Estilo general para el catálogo */
+    .catalogo {
+        display: flex;
+        flex-direction: row;  /* Los productos se alinean horizontalmente */
+        justify-content: space-around;  /* Espacio uniforme entre los productos */
+        flex-wrap: wrap;  /* Permite que los productos se ajusten a nuevas filas si no hay suficiente espacio */
+        padding: 20px;
+    }
+
+    /* Estilo para las tarjetas de los productos */
+    .product-card {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 30%;  /* Ajusta el ancho de las tarjetas, puedes modificarlo según tu preferencia */
+        max-width: 300px;  /* Máximo ancho para las tarjetas */
+        background-color: #f9f9f9;
+    }
+
+    /* Imagen de los productos */
+    .product-card img {
+        width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+        max-width: 200px;  /* Máximo tamaño de imagen */
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo de los botones */
+    .product-card button {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
 </style>
 <body>
     <header class="top">
         <h1 class="titulo">Casas inteligentes <span>Yampyii</span></h1>
         <div class="contenedor">
             <a href="index.html">
-            <img class="logo" src="../casasint/img/logoint.png" alt="Logo">
+                <img class="logo" src="../casasint/img/logoint.png" alt="Logo">
             </a>
             <a href="carrito.html" class="carrito-boton">
                 <img class="carrito" src="../casasint/img/pngwing.com.png" alt="Carrito" class="icono-carrito">
@@ -45,6 +81,30 @@
         </nav>
     </div>
 
+    <!-- Catalogo de productos -->
+    <div class="catalogo">
+        <h2>Productos Disponibles</h2>
+        <div class="product-card">
+            <img src="../casasint/img/termostato.jpg" alt="Termostato inteligente">
+            <h3>Termostato Inteligente</h3>
+            <p>$99.99</p>
+            <button onclick="addToCart('Termostato Inteligente', 99.99)">Añadir al carrito</button>
+        </div>
+        <div class="product-card">
+            <img src="../casasint/img/camara.jpeg" alt="Cámara de seguridad">
+            <h3>Cámara de Seguridad</h3>
+            <p>$149.99</p>
+            <button onclick="addToCart('Cámara de Seguridad', 149.99)">Añadir al carrito</button>
+        </div>
+        <div class="product-card">
+            <img src="../casasint/img/luces.jpeg" alt="Lámpara Inteligente">
+            <h3>Lámpara Inteligente</h3>
+            <p>$49.99</p>
+            <button onclick="addToCart('Lámpara Inteligente', 49.99)">Añadir al carrito</button>
+        </div>
+    </div>
+
+    <!-- Carrito de Compras -->
     <div class="carrito-lis">
         <h2>Tu carrito de compras</h2>
         <table>
@@ -63,20 +123,84 @@
         <div class="total">
             <p>Total: $<span id="total-price">0</span></p>
         </div>
-        <button class="btn-pagar">Pagar</button>
+        <button class="btn-pagar" onclick="showPaymentMethods()">Pagar</button>
     </div>
 
-    <div class="chatbot-icon" onclick="toggleChat()">
-        💬
-    </div>
+    
+ <!-- Métodos de pago -->
+<div id="payment-methods" style="display:none;">
+    <h3>Elige tu método de pago</h3>
+    <button onclick="toggleCardForm()">Tarjeta de crédito o débito</button>
+    <button onclick="alert('Pago con PayPal seleccionado')">PayPal</button>
 
-    <div class="chatbox" id="chatbox">
-        <div class="chat-header">Atención al Cliente</div>
-        <div class="chat-messages" id="chat-messages">
-            <div class="message">Hola 👋 ¿En qué podemos ayudarte?</div>
-        </div>
-        <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." onkeypress="sendMessage(event)">
+    <div id="card-form" style="display:none; margin-top: 20px;">
+        <h4>Formulario de pago con tarjeta</h4>
+        <form onsubmit="submitCardPayment(event)">
+            <label>
+                Nombre en la tarjeta:
+                <input type="text" name="nombre" required>
+            </label><br><br>
+            <label>
+                Número de tarjeta:
+                <input type="text" name="tarjeta" maxlength="16" required>
+            </label><br><br>
+            <label>
+                Fecha de expiración:
+                <input type="month" name="expiracion" required>
+            </label><br><br>
+            <label>
+                Código CVV:
+                <input type="text" name="cvv" maxlength="4" required>
+            </label><br><br>
+            <button type="submit">Pagar ahora</button>
+        </form>
     </div>
+</div>
+
+
+    <script>
+        const cart = [];
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = '';
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                cartItems += `
+                    <tr>
+                        <td>${item.product}</td>
+                        <td>1</td>
+                        <td>$${item.price}</td>
+                        <td>$${item.price}</td>
+                    </tr>
+                `;
+                totalPrice += item.price;
+            });
+
+            document.getElementById('cart-items').innerHTML = cartItems;
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        }
+
+        function showPaymentMethods() {
+            document.getElementById('payment-methods').style.display = 'block';
+        }
+        function toggleCardForm() {
+            const form = document.getElementById('card-form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        function submitCardPayment(event) {
+            event.preventDefault();
+            alert('Pago procesado con tarjeta. ¡Gracias por tu compra!');
+            document.getElementById('card-form').style.display = 'none';
+        }
+        
+    </script>
 
     <footer class="footer">
         <div class="social-icons">
@@ -101,34 +225,5 @@
         </div>
         <p>Todos los derechos reservados. p@ll-@res-Y@mpyii company.</p>
     </footer>
-
-    <script>
-        function toggleChat() {
-            const chatbox = document.getElementById('chatbox');
-            chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function sendMessage(event) {
-            if (event.key === 'Enter') {
-                const input = document.getElementById('chat-input');
-                const message = input.value.trim();
-                if (message !== '') {
-                    const chatMessages = document.getElementById('chat-messages');
-                    const userMsg = document.createElement('div');
-                    userMsg.className = 'message';
-                    userMsg.textContent = 'Tú: ' + message;
-                    chatMessages.appendChild(userMsg);
-
-                    const botReply = document.createElement('div');
-                    botReply.className = 'message';
-                    botReply.textContent = 'Bot: Gracias por tu mensaje. Te responderemos pronto.';
-                    chatMessages.appendChild(botReply);
-
-                    input.value = '';
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-            }
-        }
-    </script>
 </body>
 </html>
