@@ -1,100 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Tu casa inteligente</title>
   <link rel="preload" href="css/normalize.css" as="style">
   <link rel="stylesheet" href="css/normalize.css">
   <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
   <link rel="preload" href="css/styles.css" as="style">
   <link href="css/styles.css" rel="stylesheet">
-  
-  <meta charset="UTF-8">
-  <title>Página de Login</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    .login-container {
+      max-width: 400px;
+      margin: 5rem auto;
+      padding: 3rem 2rem;
+      background: var(--blanco);
+      border-radius: 1rem;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
     }
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      width: 300px;
+
+    .login-container h2 {
+      margin-bottom: 2rem;
+      color: var(--azulgros);
     }
-    h2 {
-      text-align: center;
-      color: black;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
+
+    .login-container button {
+      background-color: var(--azulgros);
+      color: var(--blanco);
       border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-bottom: 10px;
+      padding: 1rem;
+      font-size: 1.6rem;
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: .5rem;
+      transition: background-color 0.3s;
     }
-    button:hover {
-      background-color: #45a049;
+
+    .login-container button:hover {
+      background-color: var(--esme);
     }
+
+    .login-container input {
+      width: 100%;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: .5rem;
+      border: 1px solid var(--grispla);
+    }
+
     .form-section {
       display: none;
     }
+
     .form-section.active {
       display: block;
     }
-    a{
-      color: blanchedalmond;
+
+    .form-section h3 {
+      color: var(--azulgros);
+      margin-top: 2rem;
+    }
+
+    .login-container a {
+      text-decoration: none;
+      color: var(--blanco);
     }
   </style>
 </head>
+
 <body>
   <header class="top">
     <h1 class="titulo">Casas inteligentes <span>Yampyii</span></h1>
     <div class="contenedor">
-        <a href="index.html">
-        <img class="logo" src="../casasint/img/logoint.png" alt="">
+      <a href="index.html">
+        <img class="logo" src="../casasint/img/logoint.png" alt="Logo">
       </a>
-</header>
-<div class="container">
-  <h2>Bienvenido</h2>
-  <button onclick="mostrarFormulario('login')">Iniciar Sesión</button>
-  <button onclick="mostrarFormulario('crear')"><a href="registro.html">Crear Usuario</button></a>
+    </div>
+  </header>
 
-  <div id="login" class="form-section">
-    <h3>Iniciar Sesión</h3>
-    <form>
-      <input type="text" placeholder="Usuario" required>
-      <input type="password" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
-
-  <div id="crear" class="form-section">
-    <h3>Crear Usuario</h3>
-    <form>
-      <input type="text" placeholder="Nuevo Usuario" required>
-      <input type="email" placeholder="Correo Electrónico" required>
-      <input type="password" placeholder="Contraseña" required>
-      <button type="submit">Registrar</button>
-    </form>
-  </div>
+ 
+  <div class="nav-bg">
+    <nav class="navegacion-principal contenedor">
+        <ul>
+            <li class="submenu">
+                <a href="#">Menú</a>
+                <ul class="dropdown">
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="login.html">Registrar</a></li>
+                    <li><a href="nosotros.html">Informacíon</a></li>
+                    <li><a href="ingresar.html">ingresar</a></li>
+                    
+                </ul>
+            </li>
+        </ul>
+     <h1 class="imagina">Tu lo imaginas nosotros lo creamos</h1>   
+    </nav>
 </div>
 
-<script>
-  function mostrarFormulario(formularioId) {
-    document.getElementById('login').classList.remove('active');
-    document.getElementById('crear').classList.remove('active');
-    document.getElementById(formularioId).classList.add('active');
-  }
-</script>
+  <div class="login-container">
+    <h2>Bienvenido</h2>
+    <button onclick="mostrarFormulario('login')">Iniciar Sesión</button>
+    <button onclick="location.href='registro.html'">Crear Usuario</button>
+
+    <div id="login" class="form-section active">
+      <h3>Iniciar Sesión</h3>
+      <form>
+        <input type="text" placeholder="Usuario" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function mostrarFormulario(id) {
+      document.querySelectorAll('.form-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>

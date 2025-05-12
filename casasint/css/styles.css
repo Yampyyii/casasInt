@@ -635,3 +635,74 @@ h1,h2,h3 {
     box-sizing: border-box;
 }
 
+.procesos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.proceso {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.proceso img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+.novedades {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+}
+
+.novedades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.novedad img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.novedad h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.novedad p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.imagina {
+    text-align: center;
+    font-style: italic;
+    font-family: 'Georgia', 'Cursive', serif; /* Más cursiva y elegante */
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    color: #333;
+
+    /* Efecto de aparición suave */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecer 1.5s ease-out forwards;
+}
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
