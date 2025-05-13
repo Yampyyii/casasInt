@@ -11,12 +11,15 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
+    
     <header class="top">
         <h1 class="titulo">Casas inteligentes <span>Yampyii</span></h1>
-        <div class="contenedor">
-            <a href="index.html">
+           <a href="index.html">
             <img class="logo" src="../casasint/img/logoint.png" alt="">
           </a>
+          <h1 class="imagina">Tu lo sueñas nosotros lo creamos</h1>
+        <div class="contenedor">
+         
           <a href="carrito.html" class="carrito-boton">
             <img  class="carrito" src="../casasint/img/pngwing.com.png" alt="Carrito" class="icono-carrito">
           </a>
@@ -31,16 +34,15 @@
                     <a href="#">Menú</a>
                     <ul class="dropdown">
                         <li><a href="productos.html">Productos</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
                         <li><a href="login.html">Registrar</a></li>
                         <li><a href="nosotros.html">Informacíon</a></li>
-                        <li><a href="ingresar.html">ingresar</a></li>
-                        
+                        <li><a href="ingresar.html">Iniciar Sesion</a></li>
+                        <li><a href="politicas.html">Politicas</a></li>                        
                     </ul>
                 </li>
             </ul>
-         <h1 class="imagina">Tu lo imaginas nosotros lo creamos</h1>   
+            
         </nav>
     </div>
     
@@ -50,9 +52,11 @@
         <!-- Slider de Imágenes -->
         <div class="carousel-container">
             <div class="carousel-slide">
-                <img class="imagee"  src="/casasint/img/casas.jpeg" alt="Imagen 1">
+                <img class="imagee"  src="/casasint/img/nose.jpg" alt="Imagen 1">
                 <img class="imagee" src="/casasint/img/huella.jpeg" alt="Imagen 2">
-                <img class="imagee" src="/casasint/img/nose.jpg" alt="Imagen 3">
+                <img class="imagee" src="/casasint/img/orienta.jpeg" alt="Imagen 3">
+                <img class="imagee" src="/casasint/img/intecama.jpeg" alt="Imagen 4">                
+                
             </div>
             <div class="carousel-arrow left-arrow" id="prevArrow">&#10094;</div>
             <div class="carousel-arrow right-arrow" id="nextArrow">&#10095;</div>
@@ -60,15 +64,48 @@
     <section class="hero">
         <div class="contenido-hero">
             <h2>Tu Casa Inteligente </h2>
-            <h2>Tu lo sueñas nosotros lo creamos</h2>
+            <h2>Todo al alcance de tu mano</h2>
                            <div class="ubicacion">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="88" height="88" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFC107" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z"/>
                     <circle cx="12" cy="11" r="3" />
                     <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
                 </svg>
+                
                 <p>Estado de México, Itgam</p>
             </div>
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ubicación de la Empresa</title>
+  <style>
+    #mapa {
+      width: 100%;
+      height: 400px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>¿Dónde estamos?</h2>
+  <div id="mapa"></div>
+
+  <!-- Google Maps Embed API -->
+
+  <iframe
+    class="mapa"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.123456789!2d-99.059554!3d19.463244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8c123456789%3A0xabcdef1234567890!2sAvenida%20608%20y%20Avenida%20412%20300%2C%20San%20Juan%20de%20Arag%C3%B3n%2C%20Gustavo%20A.%20Madero%2C%2007470%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1625000000000!5m2!1ses!2smx"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+</body>
+</html>
+
             <a href="contacto.html" class="boton" >Contactar</a>
         </div> <!--.contenido-hero --> 
     
@@ -249,7 +286,13 @@
                     resetAutoSlide();
                 });
             }
-        
+            if (prevArrow) {
+                prevArrow.addEventListener('click', () => {
+                    counter--;
+                    updateCarousel();
+                    resetAutoSlide();
+                });
+            }
             function resetAutoSlide() {
                 clearInterval(autoSlide);
                 autoSlide = setInterval(() => {

@@ -399,7 +399,7 @@ h1,h2,h3 {
 
 .carousel-slide {
     display: flex;
-    width: 300%; /* 100% por cada imagen, si hay 3 imágenes sería 300% */
+    width: 400%; /* 100% por cada imagen, si hay 3 imágenes sería 300% */
     transition: transform 0.5s ease-in-out;
 }
 
@@ -501,7 +501,9 @@ h1,h2,h3 {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* evita que se vayan a otra línea */
+    overflow-x: auto;   /* permite scroll si no caben */
+    padding: 1rem;
 }
 
 .columna {
@@ -692,7 +694,7 @@ h1,h2,h3 {
     font-family: 'Georgia', 'Cursive', serif; /* Más cursiva y elegante */
     font-size: 1.8rem;
     margin-top: 1.5rem;
-    color: #333;
+    color: #ddcccc;
 
     /* Efecto de aparición suave */
     opacity: 0;
@@ -705,4 +707,7 @@ h1,h2,h3 {
         opacity: 1;
         transform: translateY(0);
     }
+}
+.productoss{
+    color: #ccc;
 }
