@@ -46,7 +46,8 @@
         </nav>
     </div>
     <h1 class="productoss">Productos</h1>
-    
+    <div class="usuario1" id="bienvenida-usuario" style="font-size: 1.2rem; margin-bottom: 20px;"></div>
+
     <div class="columnas-productos">
         <div class="producto-card">
             <img src="../casasint/img/movimiento.jpeg" alt="Sensor de Movimiento">
@@ -150,7 +151,21 @@
 
         <p>Todos los derechos reservados. p@ll-@res-Y@mpyii company.</p>
     </footer>
+    <script>
+        const nombreUsuario = sessionStorage.getItem("usuario");
 
+if (!nombreUsuario) {
+    // Si no hay sesión, redirige al login
+    window.location.href = "ingresar.html";
+} else {
+    document.getElementById('bienvenida-usuario').textContent = `Bienvenido, ${nombreUsuario}`;
+}
+        // Mostrar nombre del usuario si está guardado
+        const nombreUsuario = sessionStorage.getItem("usuario");
+        if (nombreUsuario) {
+            document.getElementById('bienvenida-usuario').textContent = `Bienvenido, ${nombreUsuario}`;
+        }
+        </script>
 
 
 </body>

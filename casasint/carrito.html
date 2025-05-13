@@ -86,6 +86,9 @@
     <!-- Catalogo de productos -->
     <div class="catalogo">
         <h2>Productos Disponibles</h2>
+
+        <h1><div class="usuario1" id="bienvenida-usuario" style="font-size: 1.2rem; margin-bottom: 20px;"></div></h1>
+
         <div class="product-card">
             <img src="../casasint/img/termostato.jpg" alt="Termostato inteligente">
             <h3>Termostato Inteligente</h3>
@@ -202,7 +205,11 @@
             alert('Pago procesado con tarjeta. ¡Gracias por tu compra!');
             document.getElementById('card-form').style.display = 'none';
         }
-        
+        const nombreUsuario = sessionStorage.getItem("usuario");
+if (nombreUsuario) {
+    document.getElementById('bienvenida-usuario').textContent = `Bienvenido, ${nombreUsuario}`;
+}
+
     </script>
 
     <footer class="footer">
